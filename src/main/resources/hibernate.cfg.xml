@@ -1,0 +1,8 @@
+<!DOCTYPE hibernate-configuration SYSTEM "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <mapping class="com.jscomp.zooweb.domain.Caretaker"/>
+        <mapping class="com.jscomp.zooweb.domain.Cage"/>
+        <mapping class="com.jscomp.zooweb.domain.Animal"/>
+    </session-factory>
+</hibernate-configuration>

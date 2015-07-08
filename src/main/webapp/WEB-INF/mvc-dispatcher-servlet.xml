@@ -1,0 +1,43 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <!--указание спрингу сканировать прописанные в base-package пакеты, чтобы искать классы, помеченные
+    аннотациями @Component или его наследниками (@Service, @Repository @Controller)-->
+    <context:component-scan base-package="com.jscomp.zooweb.controller"/>
+
+    <!--позволяет использовать короткие имена ("index") вместо полных("WEB-INF/pages/index.jsp" для
+    файлов в папке WEB-INF/pages и с расширением .jsp)-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--все ресурсы папки resources из папки webapp будут мапиться на url /resources/-->
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+
+    <!--возможность использовать аннотации Spring MVC-->
+    <mvc:annotation-driven />
+
+    <!--бин messageSource для использования текстовых констант из файла messages.properties-->
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
+
+    <!--включаем возможность исп-я security аннотаций-->
+    <security:global-method-security jsr250-annotations="enabled" pre-post-annotations="enabled"
+                                     secured-annotations="enabled"/>
+
+</beans>
