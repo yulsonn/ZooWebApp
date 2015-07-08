@@ -8,7 +8,7 @@ import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "animal")
-public class Animal /*implements Comparable<Animal>*/{
+public class Animal{
 
     @Id
     @Column(name = "id")
@@ -86,30 +86,4 @@ public class Animal /*implements Comparable<Animal>*/{
         this.caretaker = caretaker;
     }
 
-
-/*    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Animal animal = (Animal) o;
-
-        return id.equals(animal.id);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + type.hashCode();
-        result = 31 * result + age.hashCode();
-        result = 31 * result + cage.hashCode();
-        result = 31 * result + caretaker.hashCode();
-        return result;
-    }
-
-    @Override
-    public int compareTo(Animal o) {
-        return this.getId() - o.getId();
-    }*/
 }

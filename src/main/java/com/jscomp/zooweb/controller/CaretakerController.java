@@ -34,7 +34,6 @@ public class CaretakerController {
 
     @RequestMapping(value = "/addCaretaker", method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated()")
-    /*@ModelAttribute непосредственно перед параметром в методе - и он будет загружен из модели по имени или по указанному названию.*/
     public String addCaretaker(@ModelAttribute("caretaker") Caretaker caretaker, BindingResult bindingResult) {
         this.caretakerValidator.validate(caretaker, bindingResult);
         if (bindingResult.hasErrors()){

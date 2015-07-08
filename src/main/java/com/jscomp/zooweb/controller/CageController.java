@@ -36,7 +36,6 @@ public class CageController {
 
     @RequestMapping(value = "/addCage", method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated()")
-    /*@ModelAttribute непосредственно перед параметром в методе - он будет загружен из модели по имени или по указанному названию.*/
     public String addCage(@ModelAttribute("cage") @Valid Cage cage, BindingResult bindingResult) {
         this.cageValidator.validate(cage, bindingResult);
 

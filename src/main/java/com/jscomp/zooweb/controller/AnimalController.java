@@ -57,7 +57,6 @@ public class AnimalController {
 
     @RequestMapping(value = "/addAnimal", method = RequestMethod.POST)
     @PreAuthorize("isAuthenticated()")
-    /*@ModelAttribute непосредственно перед параметром в методе - он будет загружен из модели по имени или по указанному названию.*/
     public String addAnimal(Model model, @ModelAttribute("animal") @Valid Animal animal, BindingResult bindingResult) {
         this.animalValidator.validate(animal, bindingResult);
 
